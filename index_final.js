@@ -22,12 +22,12 @@ try {
 // ----------------------- FIREBASE INIT -------------------------
 firebase.initializeApp(
   {
-    apiKey: "AIzaSyCpqghmJdz2LP6GoWZpLePwBETfyS8V5GE",
-     authDomain: "chatbotexemple.firebaseapp.com",
-     databaseURL: "https://chatbotexemple.firebaseio.com",
-     projectId: "chatbotexemple",
-     storageBucket: "chatbotexemple.appspot.com",
-     messagingSenderId: "629136349242"
+    apiKey: "xxxx",
+     authDomain: "xxxx",
+     databaseURL: "xxxx",
+     projectId: "xxxx",
+     storageBucket: "xxxx",
+     messagingSenderId: "xxxx"
   }
 );
 
