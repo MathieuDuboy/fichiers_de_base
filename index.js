@@ -18,34 +18,51 @@ try {
   Wit = require( 'node-wit' ).Wit;
   log = require( 'node-wit' ).log;
 }
+
 // ----------------------- FIREBASE INIT -------------------------
 firebase.initializeApp(
   {
-    // a remplir
+    apiKey: "xxxx",
+     authDomain: "xxxx",
+     databaseURL: "xxxx",
+     projectId: "xxxx",
+     storageBucket: "xxxx",
+     messagingSenderId: "xxxx"
   }
 );
 
 admin.initializeApp( {
   credential: admin.credential.cert( {
-    // a remplir
+    "type": "xxxx",
+    "project_id": "xxxx",
+    "private_key_id": "xxxx",
+    "private_key": "xxxx",
+    "client_email": "xxxx",
+    "client_id": "xxxx",
+    "auth_uri": "xxxx",
+    "token_uri": "xxxx",
+    "auth_provider_x509_cert_url": "xxxx",
+    "client_x509_cert_url": "xxxx"
   }),
-  databaseURL: ""   // saisir ici vos informations (infos sur session XX)
+  databaseURL: "https://xxxx.firebaseio.com"
 });
 
+// ----------------------- API KEY openweathermap -------------------------
+var api_key_weather = "xxxx";
 // ----------------------- PARAMETRES DU SERVEUR -------------------------
 const PORT = process.env.PORT || 5000;
 // Wit.ai parameters
-const WIT_TOKEN = "";   // saisir ici vos informations (infos sur session XX)
+const WIT_TOKEN = "xxxx";   // saisir ici vos informations (infos sur session XX)
 // Messenger API parameters
-const FB_PAGE_TOKEN = "";   // saisir ici vos informations (infos sur session XX)
+const FB_PAGE_TOKEN = "xxxx";   // saisir ici vos informations (infos sur session XX)
 if ( !FB_PAGE_TOKEN ) {
   throw new Error( 'missing FB_PAGE_TOKEN' )
 }
-const FB_APP_SECRET = "";   // saisir ici vos informations (infos sur session XX)
+const FB_APP_SECRET = "xxxx";   // saisir ici vos informations (infos sur session XX)
 if ( !FB_APP_SECRET ) {
   throw new Error( 'missing FB_APP_SECRET' )
 }
-let FB_VERIFY_TOKEN = "";   // saisir ici vos informations (infos sur session XX)
+let FB_VERIFY_TOKEN = "xxxx";   // saisir ici vos informations (infos sur session XX)
 crypto.randomBytes( 8, ( err, buff ) => {
   if ( err ) throw err;
   FB_VERIFY_TOKEN = buff.toString( 'hex' );
@@ -174,24 +191,77 @@ var firstEntityValue = function( entities, entity ) {
   return typeof val === 'object' ? val.value : val
 }
 // ------------------------ LISTE DE TOUTES VOS ACTIONS A EFFECTUER ---------------------------
+
 var actions = {
-  // fonctions genérales à définir ici 
+  // fonctions genérales à définir ici
+  send( {sessionId}, response ) {
+    const recipientId = sessions[ sessionId ].fbid;
+    if ( recipientId ) {
+      if ( response.quickreplies ) {
+        response.quick_replies = [];
+        for ( var i = 0, len = response.quickreplies.length; i < len; i++ ) {
+          response.quick_replies.push( {
+            title: response.quickreplies[ i ],
+            content_type: 'text',
+            payload: response.quickreplies[ i ]
+          } );
+        }
+        delete response.quickreplies;
+      }
+      return fbMessage( recipientId, response )
+        .then( () => null )
+        .catch( ( err ) => {
+          console.log( "Je send" + recipientId );
+          console.error(
+            'Oops! erreur ',
+            recipientId, ':', err.stack || err );
+        } );
+    } else {
+      console.error( 'Oops! utilisateur non trouvé : ', sessionId );
+      return Promise.resolve()
+    }
+  },
+  envoyer_message_text( sessionId, context, entities, text ) {
+    const recipientId = sessions[ sessionId ].fbid;
+    var response = {
+      "text": text
+    };
+    return fbMessage( recipientId, response )
+      .then( () => {} )
+      .catch( ( err ) => {
+        console.log( "Erreur envoyer_message_text" + recipientId );
+      } );
+  },
+  reset_context( entities, context, sessionId ) {
+    console.log( "Je vais reset le context" + JSON.stringify( context ) );
+    return new Promise( function( resolve, reject ) {
+      context = {};
+      return resolve( context );
+    } );
+  }
 };
 // --------------------- CHOISIR LA PROCHAINE ACTION (LOGIQUE) EN FCT DES ENTITES OU INTENTIONS------------
 function choisir_prochaine_action( sessionId, context, entities ) {
   // ACTION PAR DEFAUT CAR AUCUNE ENTITE DETECTEE
   if(Object.keys(entities).length === 0 && entities.constructor === Object) {
-	// Que faire ici ?
+
   }
-  // PAS DINTENTION DETECTEE MAIS SUREMENT UNE ENTITY
+  // PAS DINTENTION DETECTEE
   if(!entities.intent) {
-	// Quel est l'entité détectée ?
+
   }
   // IL Y A UNE INTENTION DETECTION : DECOUVRONS LAQUELLE AVEC UN SWITCH
   else {
-	// Quelle est l'intention détectée ?
+    switch ( entities.intent && entities.intent[ 0 ].value ) {
+      case "Dire_Bonjour":
+        actions.envoyer_message_text( sessionId, context, entities, 'Bonjour mon cher utilisateur !');
+        break;
+    };
   }
 };
+
+// --------------------- FONCTION POUR AFFICHER LA METEO EN FCT DE LA LAT & LNG ------------
+
 // --------------------- LE SERVEUR WEB ------------
 const wit = new Wit( {
   accessToken: WIT_TOKEN,
@@ -211,9 +281,10 @@ app.use(( {
 app.use( bodyParser.json( {
   verify: verifyRequestSignature
 } ) );
+// ------------------------- LE WEBHOOK / hub.verify_token à CONFIGURER AVEC LE MEME MOT DE PASSE QUE FB_VERIFY_TOKEN ------------------------
 app.get( '/webhook', ( req, res ) => {
   if ( req.query[ 'hub.mode' ] === 'subscribe' && req.query[
-      'hub.verify_token' ] === "" ) { // a remplir en étape XX
+      'hub.verify_token' ] === "xxxx" ) { // remplir ici à la place de xxxx le meme mot de passe que FB_VERIFY_TOKEN
     res.send( req.query[ 'hub.challenge' ] );
   } else {
     res.sendStatus( 400 );
@@ -241,25 +312,39 @@ app.post( '/webhook', ( req, res ) => {
           // -------------------------- MESSAGE IMAGE OU GEOLOCALISATION ----------------------------------
           if (event.message.attachments != null  && typeof event.message.attachments[0] != 'undefined') {
               // envoyer à Wit.ai ici
+            
 					}
           // --------------------------- MESSAGE QUICK_REPLIES --------------------
-	  else if ( hasValue( event.message, "text" ) && hasValue(event.message, "quick_reply" ) ) {
+					else if ( hasValue( event.message, "text" ) && hasValue(event.message, "quick_reply" ) ) {
             // envoyer à Wit.ai ici
+          
           }
           // ----------------------------- MESSAGE TEXT ---------------------------
           else if ( hasValue( event.message, "text" ) ) {
               // envoyer à Wit.ai ici
+              wit.message( text, sessions[ sessionId ].context )
+                .then( ( {
+                  entities
+                } ) => {
+                  choisir_prochaine_action( sessionId, sessions[
+                    sessionId ].context, entities );
+                  console.log( 'Yay, on a une response de Wit.ai : ' + JSON.stringify(
+                    entities ) );
+                } )
+                .catch( console.error );
           }
           // ----------------------------------------------------------------------------
           else {
               // envoyer à Wit.ai ici
           }
-        } 
+        }
         // ----------------------------------------------------------------------------
         else if ( event.postback && event.postback.payload ) {
           var sender = event.sender.id;
           var sessionId = findOrCreateSession( sender );
             // envoyer à Wit.ai ici
+            
+
           }
         // ----------------------------------------------------------------------------
         else {
@@ -270,7 +355,7 @@ app.post( '/webhook', ( req, res ) => {
   }
   res.sendStatus( 200 );
 } );
-// -----------------VERIFICATION SIGNATURE -----------------------
+// ----------------- VERIFICATION SIGNATURE -----------------------
 function verifyRequestSignature( req, res, buf ) {
   var signature = req.headers[ "x-hub-signature" ];
   if ( !signature ) {
