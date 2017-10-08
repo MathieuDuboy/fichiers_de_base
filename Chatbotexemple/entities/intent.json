@@ -1,0 +1,27 @@
+{
+"data" : {
+"lookups" : [
+"trait"
+],
+"name" : "intent",
+"lang" : "fr",
+"exotic" : false,
+"id" : "intent",
+"values" : [
+{
+"value" : "Dire_Bonjour"
+},
+{
+"value" : "Dire_aurevoir"
+},
+{
+"value" : "RETOUR_ACCUEIL"
+},
+{
+"value" : "demander_meteo"
+}
+],
+"doc" : "User-defined entity",
+"builtin" : false
+}
+}

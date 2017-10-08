@@ -1,0 +1,9 @@
+{
+"version" : 20160513,
+"zip-command" : "zip Chatbotexemple.zip Chatbotexemple/app.json Chatbotexemple/entities/*.json Chatbotexemple/actions.json Chatbotexemple/stories.json Chatbotexemple/expressions.json",
+"data" : {
+"name" : "Chatbotexemple",
+"description" : "Application wit.ai de notre chatbot météo",
+"lang" : "fr"
+}
+}

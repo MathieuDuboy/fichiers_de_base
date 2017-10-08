@@ -1,0 +1,440 @@
+{
+"data" : [
+{
+"text" : "Arcachon",
+"entities" : [
+{
+"entity" : "location",
+"value" : "\"Arcachon\"",
+"start" : 0,
+"end" : 8
+}
+]
+},
+{
+"text" : "Au revoir",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_aurevoir\""
+}
+]
+},
+{
+"text" : "BOnjour",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_Bonjour\""
+}
+]
+},
+{
+"text" : "Bjr",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_Bonjour\""
+}
+]
+},
+{
+"text" : "Bonjour",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_Bonjour\""
+}
+]
+},
+{
+"text" : "Bordeaux",
+"entities" : [
+{
+"entity" : "location",
+"value" : "\"Bordeaux\"",
+"start" : 0,
+"end" : 8
+}
+]
+},
+{
+"text" : "Bye",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_aurevoir\""
+}
+]
+},
+{
+"text" : "Bye bye",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_aurevoir\""
+}
+]
+},
+{
+"text" : "C'est quoi la météo ?",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "Coucou",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_Bonjour\""
+}
+]
+},
+{
+"text" : "Dire_aurevoir",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_aurevoir\""
+}
+]
+},
+{
+"text" : "Donne moi la méteo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "Donne moi la météo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "Hello",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_Bonjour\""
+}
+]
+},
+{
+"text" : "Il fait chaud ?",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "Je m'en vais !",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_aurevoir\""
+}
+]
+},
+{
+"text" : "Je veux connaitre la météo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "Je veux la météo de Bordeaux",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+},
+{
+"entity" : "location",
+"value" : "\"Bordeaux\"",
+"start" : 20,
+"end" : 28
+}
+]
+},
+{
+"text" : "Je veux retourner à l'accueil",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"RETOUR_ACCUEIL\""
+}
+]
+},
+{
+"text" : "Lille",
+"entities" : [
+{
+"entity" : "location",
+"value" : "\"Lille\"",
+"start" : 0,
+"end" : 5
+}
+]
+},
+{
+"text" : "Londres",
+"entities" : [
+{
+"entity" : "location",
+"value" : "\"Londres\"",
+"start" : 0,
+"end" : 7
+}
+]
+},
+{
+"text" : "Lyon",
+"entities" : [
+{
+"entity" : "location",
+"value" : "\"Lyon\"",
+"start" : 0,
+"end" : 4
+}
+]
+},
+{
+"text" : "Paris",
+"entities" : [
+{
+"entity" : "location",
+"value" : "\"Paris\"",
+"start" : 0,
+"end" : 5
+}
+]
+},
+{
+"text" : "Quel temps fait-il ?",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "RETOUR_ACCUEIL",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"RETOUR_ACCUEIL\""
+}
+]
+},
+{
+"text" : "Salut",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_Bonjour\""
+}
+]
+},
+{
+"text" : "Strasbourg",
+"entities" : [
+{
+"entity" : "location",
+"value" : "\"Strasbourg\"",
+"start" : 0,
+"end" : 10
+}
+]
+},
+{
+"text" : "Toulouse",
+"entities" : [
+{
+"entity" : "location",
+"value" : "\"Toulouse\"",
+"start" : 0,
+"end" : 8
+}
+]
+},
+{
+"text" : "bonjour",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"Dire_Bonjour\""
+}
+]
+},
+{
+"text" : "demander_meteo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "donne moi la méteo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "donne moi la météo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "il fait beau ?",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "je veux la méteo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "je veux la météo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "je veux retourner à l'accueil",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"RETOUR_ACCUEIL\""
+}
+]
+},
+{
+"text" : "la meteo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "la météo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "meteo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "méteo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "météo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "retour_accueil",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"RETOUR_ACCUEIL\""
+}
+]
+},
+{
+"text" : "retourner au début",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"RETOUR_ACCUEIL\""
+}
+]
+},
+{
+"text" : "retourner à l'accueil",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"RETOUR_ACCUEIL\""
+}
+]
+},
+{
+"text" : "strasbourg"
+},
+{
+"text" : "toulouse"
+},
+{
+"text" : "voir la meteo",
+"entities" : [
+{
+"entity" : "intent",
+"value" : "\"demander_meteo\""
+}
+]
+},
+{
+"text" : "à Toulouse"
+}
+]
+}
