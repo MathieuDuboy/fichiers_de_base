@@ -8,3 +8,6 @@
 - Importez Chatbotexemple.zip
 - Validez
 Votre app Wit.ai sera déja prête à l'emploi !
+
+<b>Si vous avec un projet souhaitez des informations concernant la création d'un Chatbot Messenger, contactez-moi à contact@mon-chatbot.com ou directement sur https://mon-chatbot.com</b>
+
