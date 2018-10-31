@@ -1,4 +1,4 @@
-# fichiers_de_base
+# ChatBot Messenger Node.js on Heroku / Wit.ai / Firebase
 <b>Fichiers de base utilisés pour le cours :</b>
 - index.js à utiliser comme base pour votre cours : https://www.udemy.com/chatbots-chatbot-messenger-avec-witai-nodejs-et-heroku/?couponCode=ARTICLEMEDIUM
 - index_final.js à utiliser pour vérifier que vous n'avez rien oublié
